@@ -16,26 +16,23 @@ struct Star{
 	
 };
 
-void playTunes(std::string songName)
+/*void playTunes(std::string songName)
 {
 	int InstanceID = 1;
 	HAPI_TSoundOptions options(1.0f, false);
 	
 	/*if (!HAPI.LoadSound("Audio/magic-mallet.wav")) {
 		std::cout << "This shit didn't load out ong" << std::endl;
-	}*/
+	}
 	if (!HAPI.PlaySound("Audio/" + songName, options, InstanceID))
 	{
 		std::cout << "This shit didn't play out ong" << std::endl;
 
 	}
-}
+}*/
 
-void blitting() {
 
-}
-
-void clr_scrn_to_colour(int width,int height, BYTE* screen) {
+void ClearScreen(int width,int height, BYTE* screen) {
 	BYTE* copyPointer = &screen[(width * height * 4) / 2];
 	for (int i = 0; i < (width*height*4)/2; i+=4) {
 		screen[i] = 242;
@@ -46,7 +43,7 @@ void clr_scrn_to_colour(int width,int height, BYTE* screen) {
 
 }
 
-void plotLineHigh(int x0,int y0,int x1,int y1) {
+/*void plotLineHigh(int x0,int y0,int x1,int y1) {
 	int dx = x1 - x0;
 	int dy = y1 - y0;
 	int xi = 1;
@@ -129,7 +126,7 @@ void plotLine(int x0,int x1, int y0,int y1) {
 			plotLineHigh (x0, y0,x1,y1);
 		}
 	}
-}
+}*/
 
 void StarShow() {
 	Star stars[kNumStars];
@@ -158,12 +155,12 @@ void StarShow() {
 
 	while (HAPI.Update()) {
 
-		//clr_scrn_to_colour(width, height, screen);
+		//ClearScreen(width, height, screen);
 		memset(screen,0,width*height*4);
 
 		if (keyData.scanCode[HK_DOWN])
 		{
-			playTunes(("magic-mallet.wav"));
+			
 			if (kEyeDistance < 2)
 			{
 				kEyeDistance = 2;
@@ -176,7 +173,7 @@ void StarShow() {
 
 		if (keyData.scanCode[HK_UP])
 		{
-			playTunes("magic-mallet.wav");
+			
 			if (kEyeDistance > 100)
 			{
 				kEyeDistance = 100;
